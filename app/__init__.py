@@ -1,13 +1,9 @@
 import os
-from flask import Flask, request, render_template, send_from_directory
-from dotenv import load_dotenv
-
-# from . import db
+from flask import Flask, request, render_template
 from werkzeug.security import check_password_hash, generate_password_hash
-
-# from app.db import get_db
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+""" from dotenv import load_dotenv """
 
 app = Flask(__name__)
 app.config[
@@ -40,14 +36,6 @@ class UserModel(db.Model):
         return f"<User {self.username}>"
 
 
-# ------------------------------------------
-
-""" load_dotenv()
-app = Flask(__name__)
-app.config['DATABASE'] = os.path.join(os.getcwd(), 'flask.sqlite')
-db.init_app(app) """
-
-
 @app.route("/")
 def index():
     return render_template("index.html", url=os.getenv("URL"))
@@ -58,7 +46,6 @@ def register():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-        db = get_db()
         error = None
 
         if not username:
@@ -81,7 +68,7 @@ def register():
         else:
             return error, 418
 
-    ## TODO: Return a restister page
+    """  T Return a restister page """
     return "Register Page not yet implemented", 501
 
 
@@ -90,7 +77,6 @@ def login():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
-        db = get_db()
         error = None
         user = db.execute(
             "SELECT * FROM user WHERE username = ?", (username,)
@@ -106,5 +92,5 @@ def login():
         else:
             return error, 418
 
-    ## TODO: Return a login page
+    """ T Return a login page """
     return "Login Page not yet implemented", 501
