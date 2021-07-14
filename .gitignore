@@ -5,5 +5,5 @@ __pycache__
 flask.sqlite
 
 python3-virtualenv
-
+*.sqlite
 
