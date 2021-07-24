@@ -14,8 +14,8 @@ assert (){
     fi
 }
 
-username="username2"    #$(shuf -n1 /usr/share/dict/words)
-password="password2"    #$(shuf -n1 /usr/share/dict/words)
+username="$RANDOM"    #$(shuf -n1 /usr/share/dict/words)
+password="$RANDOM"    #$(shuf -n1 /usr/share/dict/words)
 wrongpassword="wrongPw"
 
 homepage () { curl -s https://hackersportfolio.duckdns.org; }

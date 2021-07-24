@@ -37,7 +37,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Verify deployment
-        run: sudo apt install words -y && bash prod-test.sh && black .
+        run: bash prod-test.sh && black .
 
       - name: Deploy site confirmation message
         run: curl -s -X POST "${{ secrets.DISCORD_WEBHOOK }}" -d "content=🚀 Deployment Successful"
