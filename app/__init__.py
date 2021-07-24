@@ -42,7 +42,7 @@ def index():
     return render_template("index.html", url=os.getenv("URL"))
 
 
-@app.route('/health')
+@app.route("/health")
 def health():
     linda = UserModel.query.filter_by(username="linda").first()
     has_linda = "yes" if linda is not None else "no"
