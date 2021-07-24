@@ -67,7 +67,7 @@ def register():
             new_user = UserModel(username, generate_password_hash(password))
             db.session.add(new_user)
             db.session.commit()
-            return f"User {username} created successfully"
+            return f"User {username} created successfully."
         else:
             return error, 418
 
@@ -91,7 +91,7 @@ def login():
             error = "Incorrect password."
 
         if error is None:
-            return "Login Successful", 200
+            return "Login Successful.", 200
         else:
             return error, 418
 
